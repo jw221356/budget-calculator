@@ -4,7 +4,9 @@ import Expenseltem from './Expenseltem'
 import { MdDelete } from 'react-icons/md'
 
 export class ExpenseList extends Component {
+  
   render() {
+    console.log(this.props.initialExpenses)
     return (
       <React.Fragment>
         <ul className='list'>
