@@ -15,6 +15,7 @@ export class ExpenseList extends Component {
                 <Expenseltem 
                   expense = {expense} 
                   key = {expense.id}
+                  handleDelete = {this.props.handleDelete}
                 />
               )
             })}

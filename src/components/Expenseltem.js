@@ -12,7 +12,13 @@ export class Expenseltem extends Component {
         </div>
             <div>
                 <button className='edit-btn'><MdEdit /></button>
-                <button className='clear-btn'><MdDelete /></button>
+                <button className='clear-btn'
+                  onClick={() =>
+                    this.props.handleDelete(this.props.expense.id)
+                  }
+                >
+                  <MdDelete />
+                </button>
             </div>
       </li>
     )
