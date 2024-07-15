@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
+import "./ExpenseList.css"
 
 export class ExpenseList extends Component {
   render() {
     return (
-      <div>ExpenseList</div>
+      <React.Fragment>
+        <ul className='list'>
+            {/* ExpenseItem */}
+        </ul>
+        <button className='btn'>
+            목록 지우기
+        </button>
+      </React.Fragment>
     )
   }
 }
