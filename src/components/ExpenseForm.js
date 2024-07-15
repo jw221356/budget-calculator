@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { MdSend } from 'react-icons/md'
 import "./ExpenseForm.css"
 
 export class ExpenseForm extends Component {
@@ -15,8 +16,9 @@ export class ExpenseForm extends Component {
                 <input type='number' className='form-control' id='amount' name='amount' placeholder='예) 100'/>
             </div>
         </div>
-        <button type='submit' ckassName='btn'>
+        <button type='submit' className='btn'>
             제출
+            <MdSend className='btn-icon'/>
         </button>
       </form>
     )
