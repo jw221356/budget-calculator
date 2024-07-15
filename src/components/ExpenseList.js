@@ -10,7 +10,14 @@ export class ExpenseList extends Component {
     return (
       <React.Fragment>
         <ul className='list'>
-            <Expenseltem />
+            {this.props.initialExpenses.map(expense => {
+              return (
+                <Expenseltem 
+                  expense = {expense} 
+                  key = {expense.id}
+                />
+              )
+            })}
         </ul>
         <button className='btn'>
             목록 지우기

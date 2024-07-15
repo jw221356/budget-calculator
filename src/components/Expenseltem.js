@@ -7,8 +7,8 @@ export class Expenseltem extends Component {
     return (
       <li className='item'>
         <div className='info'>
-            <span className='expense'>헬스 등록</span>
-            <span className='amount'> 1000 원</span>
+            <span className='expense'>{this.props.expense.charge}</span>
+            <span className='amount'>{this.props.expense.amount}</span>
         </div>
             <div>
                 <button className='edit-btn'><MdEdit /></button>
