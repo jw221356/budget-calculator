@@ -7,9 +7,9 @@ import Alert from "./components/Alert";
 const App = () => {
 
   const [charge, setCharge] = useState("");
-
+  const [id, setId] = useState('');
   const [amount, setAmount] = useState(0);
-
+  const [edit, setEdit] = useState(false);
   const [alert, setAlert] = useState({show: false});
 
 
@@ -42,17 +42,36 @@ const App = () => {
     }, 7000);
   }
 
+  const handleEdit = id => {
+    const expense = expenses.find(item => item.id === id);
+    const { charge, amount } = expense;
+    setId(id);
+    setCharge(charge);
+    setAmount(amount);
+    setEdit(true);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if(charge !== "" && amount > 0) {
-      const newExpense = {id: crypto.randomUUID, charge, amount} 
+      if(edit) {
+        const newExpenses = expenses.map(item => {
+          return item.id === id ? {...item, charge, amount} : item
+        })
 
-      // 불변성을 지켜주기 위해 새로운 expenses 생성
-      const newExpenses = [...expenses, newExpense]
-      setExpenses(newExpenses);
+        setExpenses(newExpenses);
+        setEdit(false);
+        handleAlert({ type: "success", text: "아이템 수정되었습니다." });
+      } else {
+        const newExpense = {id: crypto.randomUUID(), charge, amount} 
+        // 불변성을 지켜주기 위해 새로운 expenses 생성
+        const newExpenses = [...expenses, newExpense];
+        setExpenses(newExpenses);
+        handleAlert({ type: "success", text: "아이템이 생성되었습니다." });
+      }
       setCharge("");
       setAmount(0);
-      handleAlert({ type: "success", text: "아이템이 생성되었습니다."});
+      
     } else {
       console.log('error');
       handleAlert({
@@ -74,13 +93,15 @@ const App = () => {
         charge= {charge}
         handleAmount= {handleAmount}
         amount= {amount}
-        handleSubmit={handleSubmit}
+        handleSubmit= {handleSubmit}
+        edit= {edit}
       />
     </div>
     <div style={{width:'100%', backgroundColor:'white', padding:'1rem'}}>
       <ExpenseList 
         initialExpenses = {expenses} 
         handleDelete = {handleDelete}
+        handleEdit = {handleEdit}
         />
     </div>
     <div style={{display:'flex', justifyContent:'end', marginTop:'1rem'}}>
