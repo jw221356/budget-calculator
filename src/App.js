@@ -20,6 +20,10 @@ const App = () => {
     {id: 4, charge: "헬스 등록", amount: 2000},
   ])
 
+  const clearItems = () => {
+    setExpenses([]);
+  }
+
   const handleCharge = (e) => {
     setCharge(e.target.value);
   }
@@ -99,9 +103,10 @@ const App = () => {
     </div>
     <div style={{width:'100%', backgroundColor:'white', padding:'1rem'}}>
       <ExpenseList 
-        initialExpenses = {expenses} 
+        expenses = {expenses} 
         handleDelete = {handleDelete}
         handleEdit = {handleEdit}
+        clearItems = {clearItems} 
         />
     </div>
     <div style={{display:'flex', justifyContent:'end', marginTop:'1rem'}}>
