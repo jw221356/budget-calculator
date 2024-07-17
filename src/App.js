@@ -15,9 +15,6 @@ const App = () => {
 
   const [expenses, setExpenses] = useState ([
     {id: 1, charge: "렌트비", amount: 1600},
-    {id: 2, charge: "교통비", amount: 400},
-    {id: 3, charge: "식비", amount: 1200},
-    {id: 4, charge: "헬스 등록", amount: 2000},
   ])
 
   const clearItems = () => {
@@ -80,7 +77,7 @@ const App = () => {
       console.log('error');
       handleAlert({
         type: "danger",
-        text: "charge는 빈 값일 수 없으며, amount는 0보다 커야 합니다."
+        text: "지출 항목은 빈 값일 수 없으며, 비용은 0보다 커야 합니다."
       })
     }
 
